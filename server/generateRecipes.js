@@ -226,12 +226,12 @@ IMPORTANT: Respond ONLY with a valid, parsed JSON object matching this structure
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Tell Express to serve the built static production folder from Vite
-app.use(express.static(path.join(__dirname, 'dist')));
 
-// Catch-all route to redirect users back to index.html if they click around tabs
+app.use(express.static(path.join(__dirname, '..', 'dist')));
+
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 
