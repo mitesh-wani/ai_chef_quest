@@ -222,17 +222,21 @@ IMPORTANT: Respond ONLY with a valid, parsed JSON object matching this structure
   }
 });
 
-const server = app.listen(PORT, () => {
-  console.log(`AI Chef Quest Server running on http://localhost:${PORT}`);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Tell Express to serve the built static production folder from Vite
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Catch-all route to redirect users back to index.html if they click around tabs
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE') {
-    console.error(`Port ${PORT} is already in use. Retrying on port ${Number(PORT) + 1}...`);
-    app.listen(Number(PORT) + 1, () => {
-      console.log(`AI Chef Quest Server running on http://localhost:${Number(PORT) + 1}`);
-    });
-  } else {
-    console.error('Server error:', err);
-  }
+
+// ==========================================
+// ⚙️ 3. LEAVE THE APP LISTEN FUNCTION AT THE END
+// ==========================================
+app.listen(PORT, () => {
+  console.log(`AI Chef Quest Server running on port ${PORT}`);
 });
