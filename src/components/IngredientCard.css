@@ -1,0 +1,190 @@
+.ingredient-card {
+  position: relative;
+  width: 140px;
+  height: 160px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              box-shadow 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+.ingredient-card:hover,
+.ingredient-card:active {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ingredient-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  box-shadow: var(--shadow-accent);
+}
+
+/* Background image that expands full-card on hover / active */
+.full-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.15);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1;
+}
+
+.ingredient-card:hover .full-card-img,
+.ingredient-card:active .full-card-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark gradient overlay on hover so text remains crisp */
+.ingredient-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ingredient-card:hover::after,
+.ingredient-card:active::after {
+  opacity: 1;
+}
+
+/* Card Content Container */
+.card-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.card-image-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ingredient-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ingredient-card:hover .card-image-wrapper,
+.ingredient-card:active .card-image-wrapper {
+  transform: scale(0.9);
+  opacity: 0.2;
+}
+
+.ingredient-emoji {
+  font-size: 28px;
+}
+
+.card-info {
+  margin-top: 4px;
+}
+
+.ingredient-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+.ingredient-category {
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.ingredient-card:hover .ingredient-name,
+.ingredient-card:active .ingredient-name {
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.ingredient-card:hover .ingredient-category,
+.ingredient-card:active .ingredient-category {
+  color: #e2e8f0;
+}
+
+.add-btn {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--bg-main);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  min-height: 28px;
+}
+
+.ingredient-card:hover .add-btn,
+.ingredient-card:active .add-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.5);
+}
+
+.selected-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: var(--accent);
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 4;
+}
+
+/* Mobile Media Queries for Ingredient Cards */
+@media (max-width: 640px) {
+  .ingredient-card {
+    width: 125px;
+    height: 145px;
+    padding: 10px;
+  }
+  .card-image-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+  .ingredient-name {
+    font-size: 12px;
+  }
+}

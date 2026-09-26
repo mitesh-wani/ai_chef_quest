@@ -2,3 +2,4 @@ dist/
 node_module/      
 .env
 node_modules
+.en

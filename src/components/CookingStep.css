@@ -1,0 +1,32 @@
+/* CookingStep.css */
+.cooking-step {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--step-bg, #fff);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+              border-color 0.15s ease, background 0.15s ease;
+}
+
+.cooking-step:hover,
+.cooking-step:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent, #ff6b35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: var(--step-bg-hover, #fff8f5);
+}
+
+.cooking-step.completed {
+  opacity: 0.6;
+}
+
+.cooking-step.completed:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.cooking-step.active {
+  border-color: var(--accent, #ff6b35);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.15);
+}

@@ -1,0 +1,52 @@
+:root {
+  /* Brand Colors - Warm Culinary Orange & Crisp White Theme */
+  --accent: #ff6b35;
+  --accent-hover: #e85a24;
+  --accent-light: #fff5ed;
+  --accent-glow: rgba(255, 107, 53, 0.25);
+  
+  --secondary: #f97316;
+  --secondary-hover: #ea580c;
+  
+  /* Clean White & Light Warm Backgrounds */
+  --bg-main: #fffdfa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fff8f3;
+  --text-main: #1c1917;
+  --text-muted: #78716c;
+  --border-color: #f3eae1;
+  
+  /* Step Hover/Active States */
+  --step-bg: #ffffff;
+  --step-bg-hover: #fff5ed;
+  
+  /* Quantity & Weight Highlight Colors */
+  --orange-qty-bg: #fff7ed;
+  --orange-qty-text: #ff6b35;
+  
+  /* Shadows & Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  
+  --shadow-sm: 0 2px 6px rgba(255, 107, 53, 0.06);
+  --shadow-md: 0 6px 18px rgba(255, 107, 53, 0.1);
+  --shadow-lg: 0 12px 28px rgba(255, 107, 53, 0.15);
+  --shadow-accent: 0 4px 16px rgba(255, 107, 53, 0.35);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-main: #fffdfa;
+    --bg-card: #ffffff;
+    --bg-card-hover: #fff8f3;
+    --text-main: #1c1917;
+    --text-muted: #78716c;
+    --border-color: #f3eae1;
+  }
+}
